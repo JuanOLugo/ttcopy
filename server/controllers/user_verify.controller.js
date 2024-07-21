@@ -11,11 +11,12 @@ const verify_user = async  (req, res, next) => {
     try {
         const verify_token = await jwt.verify(token, SECRET_KEY)
         req.user = {
-            user: verify_token,
-            token
+            user_id: verify_token.id,
         }
-        console.log(verify_token)
+        next()
     } catch (error) {
         res.status(404).send({ERR:"Error de verificacion"})
     }
 }
+
+module.exports = verify_user
