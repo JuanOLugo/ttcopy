@@ -1,33 +1,54 @@
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
-
+import {BrowserRouter as Enrouter, Route, Routes} from "react-router-dom"
+import Home from './components/Home'
+import TopNavBar from './components/TopNavBar'
+import axios from 'axios'
+import { UserContext } from './Context/UserContext'
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const {USER_PRINCIPAL, setPRINCIPAL_USER} = useContext(UserContext)
+  const user_token = window.localStorage.getItem("user")
+  const [loading, setloading] = useState(false)
+  const login_with_token = async () => {
+    setloading(true)
+    const data = await axios.post("http://localhost:3456/api/session/getaccess", {}, {
+      headers: {
+        Authorization: "bearer " + user_token
+      }
+    })
+    console.log(data)
+    if(data.data.user){
+      setPRINCIPAL_USER(data.data.user)
+    }
+    setloading(false)
+  } 
+  
+
+  useEffect(() => {
+    if(user_token){
+
+      login_with_token()
+      
+    }
+  }, [])
+  
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    {
+      !loading ? <>
+
+<TopNavBar/>
+      <Enrouter>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+        </Routes>
+      </Enrouter>
+      
+      </> : <div className='bg-zinc-900'> </div>
+    }
     </>
   )
 }

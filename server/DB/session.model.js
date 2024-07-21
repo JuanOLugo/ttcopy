@@ -6,7 +6,9 @@ const USER_SCHEMA = new Schema({
         type: String,
     },
     USER_VIDEOS: [],
-    USER_COMMENTS: []
+    USER_COMMENTS: [],
+    ACCOUNTS_FOLLOW: [],
+    ACCOUNTS_FOLLOWERS: []
 })
 
 USER_SCHEMA.set("toJSON", {
