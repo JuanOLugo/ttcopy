@@ -5,7 +5,7 @@ import { FaUser, FaUserFriends} from "react-icons/fa";
 import AccountsYouFollow from './AccountsYouFollow';
 function LeftNavBar() {
   return (
-    <div className='flex flex-col overflow-y-scroll  '>
+    <div className='flex flex-col  '>
       <div className='my-5'>
         <ButtonExplo text={"Para ti"} Icon={<IoMdHome />} isNew={false}/>
         <ButtonExplo text={"Siguiendo"} Icon={<FaUserFriends/>} isNew={true}/>
