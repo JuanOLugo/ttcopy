@@ -5,13 +5,13 @@ import { UserContext } from '../../Context/UserContext'
 function LoginWindow({setOpen}) {
 
     const [sOl, setsOl] = useState(false)
-    const {USER_PRINCIPAL} = useContext(UserContext)
+    const {PRINCIPAL_USER} = useContext(UserContext)
 
     useEffect(() => {
-        if(USER_PRINCIPAL){
+        if(PRINCIPAL_USER){
             setOpen(false)
         }
-    }, [USER_PRINCIPAL])
+    }, [PRINCIPAL_USER])
     
 
   return (
