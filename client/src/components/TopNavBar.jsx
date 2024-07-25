@@ -14,7 +14,7 @@ function TopNavBar() {
     <div className="flex justify-around h-16 items-center  bg-zinc-900">
       {isOpen ? <LoginWindow setOpen={setisOpen} /> : null}
       <div>
-        <img src="../../public/TikTok_logo.svg" width={125} alt="" />
+        <a><Link to={"/"}><img src="../../public/TikTok_logo.svg" width={125} alt="" /></Link></a>
       </div>
       <div className="flex py-3 bg-zinc-700 rounded-3xl px-5">
         <input
@@ -31,7 +31,7 @@ function TopNavBar() {
           <div className="flex justify-between  w-60">
           <button className="flex text-white items-center font-bold text-xl justify-between  px-3  rounded-sm bg-zinc-800">
             <FaPlus />
-            <p className="mx-3 ">Cargar</p>
+            <Link to={"/studio/upload"}><p className="mx-3 ">Cargar</p></Link>
           </button>
           <button className="bg-zinc-800 rounded-full p-3 text-white text-3xl" onMouseEnter={() => setisOpenDropdown(!isOpenDropdown)}>
           <FaUser />
@@ -40,7 +40,6 @@ function TopNavBar() {
         {
           isOpenDropdown ? <div className="bg-zinc-800 flex flex-col my-2 absolute w-56 rounded-md px-1 py-1" onMouseLeave={() => setisOpenDropdown(false)}>
           <DropDownButtons text={"Perfil"}/>
-          <DropDownButtons text={"Cargar"}/>
           <DropDownButtons text={"Cerrar sesion"} styleClass={"border-t "} buttonFunc={() => {
             window.localStorage.removeItem("user")
             window.location.reload()

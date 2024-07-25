@@ -6,6 +6,7 @@ import Home from './components/Home'
 import TopNavBar from './components/TopNavBar'
 import axios from 'axios'
 import { UserContext } from './Context/UserContext'
+import StudioHome from './components/Studio/StudioHome'
 function App() {
   
   const {USER_PRINCIPAL, setPRINCIPAL_USER} = useContext(UserContext)
@@ -40,10 +41,12 @@ function App() {
     {
       !loading ? <>
 
-<TopNavBar/>
+
       <Enrouter>
+      <TopNavBar/>
         <Routes>
           <Route path='/' element={<Home/>}/>
+          <Route path='/studio/upload' element={<StudioHome/>}/>
         </Routes>
       </Enrouter>
       
