@@ -1,18 +1,18 @@
 import React, { useRef } from 'react'
 import { IoIosCloudUpload } from "react-icons/io";
 import Targets from './Targets';
-
+import axios from "axios"
 import { FaCamera } from "react-icons/fa";
-function Upload() {
+function Upload({setFile}) {
 
     const inputFile = useRef(null)
-    
+
+
+
     const handleFile = (e) => {
-       const file =  e.target.files[0]
+        const file = e.target.files[0]
        if(file){
-        const formData = new FormData()
-        formData.append("file", file)
-        console.log(formData.getAll("file"))
+        setFile(file)
        }
     }
 
