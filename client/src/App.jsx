@@ -7,6 +7,8 @@ import TopNavBar from './components/TopNavBar'
 import axios from 'axios'
 import { UserContext } from './Context/UserContext'
 import StudioHome from './components/Studio/StudioHome'
+import ProfilePage from './components/Profile/ProfilePage'
+import LeftNavBar from './components/Home/LeftNavBar'
 function App() {
   
   const {USER_PRINCIPAL, setPRINCIPAL_USER} = useContext(UserContext)
@@ -37,22 +39,29 @@ function App() {
   
 
   return (
-    <>
+    <div className='bg-zinc-900 h-screen'>
     {
       !loading ? <>
 
 
       <Enrouter>
       <TopNavBar/>
-        <Routes>
+      
+        <div className='flex justify-between h-screen'>
+        <LeftNavBar/>
+
+        <Routes >
           <Route path='/' element={<Home/>}/>
           <Route path='/studio/upload' element={<StudioHome/>}/>
+          <Route path='/profile' element={<ProfilePage/>}/>
         </Routes>
+       
+        </div>
       </Enrouter>
       
       </> : <div className='bg-zinc-900'> </div>
     }
-    </>
+    </div>
   )
 }
 

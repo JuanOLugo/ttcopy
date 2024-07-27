@@ -8,6 +8,7 @@ app.use(express.json());
 app.use("/api/session/", require("./routes/session.routes"));
 app.use("/api/upload/", require("./routes/upload.routes"));
 app.use("/videos", express.static(path.join(__dirname, 'videos')))
+app.use("/miniaturas", express.static(path.join(__dirname, 'thumbnail')))
 
 const port = 3456;
 app.listen(port, () => {

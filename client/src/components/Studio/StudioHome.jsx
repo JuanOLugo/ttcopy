@@ -8,7 +8,7 @@ function StudioHome() {
 
   
   return (
-    <div className='bg-zinc-900 h-screen flex flex-col justify-center items-center absolute -z-20 w-full top-0'>
+    <div className='bg-zinc-900 flex flex-col justify-center items-center relative  '>
         {
           !file ? <Upload setFile={setfile}/> : <EditVideo file={file}/>
         }

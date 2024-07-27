@@ -7,7 +7,7 @@ const videosSchema = new Schema({
     USER_OWNER: {
        type: Schema.Types.ObjectId,
        ref: "USER_MODEL"
-    }
+    },
 })
 
 const VIDEO_MODEL = model("VIDEO_MODEL", videosSchema)
