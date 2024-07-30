@@ -9,6 +9,7 @@ import { UserContext } from './Context/UserContext'
 import StudioHome from './components/Studio/StudioHome'
 import ProfilePage from './components/Profile/ProfilePage'
 import LeftNavBar from './components/Home/LeftNavBar'
+import Homevideo from './components/Videos/Homevideo'
 function App() {
   
   const {USER_PRINCIPAL, setPRINCIPAL_USER} = useContext(UserContext)
@@ -54,6 +55,7 @@ function App() {
           <Route path='/' element={<Home/>}/>
           <Route path='/studio/upload' element={<StudioHome/>}/>
           <Route path='/profile' element={<ProfilePage/>}/>
+          <Route path='/video/:user/:videoid' element={<Homevideo/>}/>
         </Routes>
        
         </div>

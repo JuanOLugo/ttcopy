@@ -10,6 +10,15 @@ const videosSchema = new Schema({
     },
 })
 
+videosSchema.set("toJSON", {
+    transform: (doc, ret, options) => {
+        ret.id = ret._id
+        delete ret._id
+        delete ret.__v
+    }
+})
+
+
 const VIDEO_MODEL = model("VIDEO_MODEL", videosSchema)
 
 module.exports = VIDEO_MODEL

@@ -38,7 +38,7 @@ function TopNavBar() {
           </button>
         </div>
         {
-          isOpenDropdown ? <div className="bg-zinc-800 flex flex-col z-20 my-2 absolute w-56 rounded-md px-1 py-1" onMouseLeave={() => setisOpenDropdown(false)}>
+          isOpenDropdown ? <div className="bg-zinc-800 flex flex-col z-50 my-2 absolute w-56 rounded-md px-1 py-1" onMouseLeave={() => setisOpenDropdown(false)}>
           <DropDownButtons text={"Perfil"} goTo={"/profile"}/>
           <DropDownButtons text={"Cerrar sesion"} styleClass={"border-t "} buttonFunc={() => {
             window.localStorage.removeItem("user")
