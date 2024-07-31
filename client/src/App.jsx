@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import {BrowserRouter as Enrouter, Route, Routes} from "react-router-dom"
+import {BrowserRouter as Enrouter, Route, Routes, Navigate} from "react-router-dom"
 import Home from './components/Home'
 import TopNavBar from './components/TopNavBar'
 import axios from 'axios'
@@ -10,6 +10,8 @@ import StudioHome from './components/Studio/StudioHome'
 import ProfilePage from './components/Profile/ProfilePage'
 import LeftNavBar from './components/Home/LeftNavBar'
 import Homevideo from './components/Videos/Homevideo'
+
+
 function App() {
   
   const {USER_PRINCIPAL, setPRINCIPAL_USER} = useContext(UserContext)
@@ -22,7 +24,6 @@ function App() {
         Authorization: "bearer " + user_token
       }
     })
-    console.log(data)
     if(data.data.user){
       setPRINCIPAL_USER(data.data.user)
     }
@@ -30,9 +31,9 @@ function App() {
   } 
   
 
+
   useEffect(() => {
     if(user_token){
-
       login_with_token()
       
     }
@@ -48,7 +49,7 @@ function App() {
       <Enrouter>
       <TopNavBar/>
       
-        <div className='flex justify-between h-screen'>
+        <div className='flex  h-screen'>
         <LeftNavBar/>
 
         <Routes >

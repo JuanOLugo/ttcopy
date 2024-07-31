@@ -66,7 +66,7 @@ function Videos() {
         ) : isOnTarget.videos ? (
           videos.map((e, i) => {
             return (
-              <div className="bg-black  h-56 flex items-center mx-5 my-5 hover:shadow-lg hover:shadow-zinc-900 transition-all ">
+              <div key={i} className="bg-black  h-56 flex items-center mx-5 my-5 hover:shadow-lg hover:shadow-zinc-900 transition-all ">
                 <Link to={`/video/@${PRINCIPAL_USER.username}/${e.id}`}>
                   <video
                     src={"http://localhost:3456" + e.VIDEO_PATH}
