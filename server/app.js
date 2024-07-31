@@ -8,6 +8,7 @@ app.use(express.json());
 app.use("/api/session/", require("./routes/session.routes"));
 app.use("/api/upload/", require("./routes/upload.routes"));
 app.use("/api/profile", require("./routes/profile.routes"))
+app.use("/api/video", require("./routes/videos.routes"))
 app.use("/videos", express.static(path.join(__dirname, 'videos')))
 app.use("/miniaturas", express.static(path.join(__dirname, 'thumbnail')))
 
