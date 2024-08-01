@@ -5,16 +5,19 @@ import axios from "axios";
 function InfoVideo({ VideoData }) {
   const { PRINCIPAL_USER } = useContext(UserContext);
   const [isClick, setisClick] = useState(false);
-  const filterIsFollowed = PRINCIPAL_USER.ACCOUNTS_FOLLOW.filter((e) => {
-    return e === VideoData.USER_OWNER.id;
-  });
-  useEffect(() => {
-    if (filterIsFollowed.length > 0) {
-      setisClick(true);
-    } else {
-      setisClick(false);
-    }
-  }, []);
+  
+  if(PRINCIPAL_USER){
+    const filterIsFollowed = PRINCIPAL_USER.ACCOUNTS_FOLLOW.filter((e) => {
+      return e === VideoData.USER_OWNER.id;
+    });
+    useEffect(() => {
+      if (filterIsFollowed.length > 0) {
+        setisClick(true);
+      } else {
+        setisClick(false);
+      }
+    }, []);
+  }
 
   const follow_unfollow = async (action) => {
     const data = await axios.post(
@@ -34,7 +37,7 @@ function InfoVideo({ VideoData }) {
         <div>
           <h1>username</h1>
         </div>
-        {PRINCIPAL_USER.username == VideoData.USER_OWNER.username ? (
+        {PRINCIPAL_USER ? PRINCIPAL_USER.username == VideoData.USER_OWNER.username ? (
           ""
         ) : (
           <div>
@@ -54,7 +57,7 @@ function InfoVideo({ VideoData }) {
               {isClick ? "Siguiendo" : "Seguir"}
             </button>
           </div>
-        )}
+        ): ""}
       </div>
     </div>
   );
