@@ -6,6 +6,7 @@ const videor = Router()
 
 
 videor.post("/getuservideo",  video_controller.getUserVideo  )
+videor.post("/addanddeletefollow",  video_controller.addanddeletefollow  )
 
 
 module.exports = videor

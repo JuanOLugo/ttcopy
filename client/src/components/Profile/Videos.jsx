@@ -1,12 +1,15 @@
 import axios from "axios";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {UserContext} from "../../Context/UserContext"
+
 function Videos() {
   const [isOnTarget, setisOnTarget] = useState({
     videos: true,
     likes: false,
   });
+
+  const nav = useNavigate()
 
   const [videos, setvideos] = useState(null);
 
@@ -17,17 +20,25 @@ function Videos() {
   const {PRINCIPAL_USER} = useContext(UserContext)
 
   const getVideosForProfile = async () => {
-    const data = await axios.post(
-      "http://localhost:3456/api/profile/getvideos",
-      {},
-      {
-        headers: {
-          Authorization: "bearer " + window.localStorage.getItem("user"),
-        },
+    
+    try {
+      const data = await axios.post(
+        "http://localhost:3456/api/profile/getvideos",
+        {},
+        {
+          headers: {
+            Authorization: "bearer " + window.localStorage.getItem("user"),
+          },
+        }
+      )
+      setvideos(data.data.videos);
+    } catch (error) {
+      if(error.response.data){
+        nav("/")
       }
-    );
-
-    setvideos(data.data.videos);
+    }
+    
+    
   };
 
   const videoREF = useRef([]);
