@@ -11,7 +11,7 @@ const uploadVideo = async (req, res) => {
   const video_name = `${+new Date()}-${file.name}`;
 
   const path_save = path.join(
-    "C:/Programacion/ttcopy/server/videos/" + video_name
+    "C:/Programing/ttcopy/ttcopy/server/videos/" + video_name
   );
 
 
@@ -39,7 +39,7 @@ const uploadVideo = async (req, res) => {
 
   await find_user.save();
 
-  res.status(200).send({msg: "Video subido satisfactoria mente"})
+  res.status(200).send({msg: "Video subido correctamente"})
 };
 
 module.exports = { uploadVideo };

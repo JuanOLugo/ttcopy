@@ -4,6 +4,7 @@ import InfoVideo from "./InfoVideo";
 import CommentsVideo from "./CommentsVideo";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import VideoActions from "./VideoActions";
 
 
 function Homevideo() {
@@ -24,10 +25,11 @@ function Homevideo() {
   return (
     <>
       {videoData ? (
-        <div className="absolute z-50 bg-black w-full h-full top-0 flex">
+        <div className="absolute z-50 bg-zinc-900 w-full h-full top-0 flex">
           <Video VideoData={videoData} />
-          <div className="flex flex-col items-center justify-around">
+          <div className="flex flex-col items-center justify-around w-2/5">
             <InfoVideo VideoData={videoData} />
+            <VideoActions VideoData={videoData}/>
             <CommentsVideo VideoData={videoData} />
           </div>
         </div>

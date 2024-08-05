@@ -5,8 +5,8 @@ import axios from "axios";
 function InfoVideo({ VideoData }) {
   const { PRINCIPAL_USER } = useContext(UserContext);
   const [isClick, setisClick] = useState(false);
-  
-  if(PRINCIPAL_USER){
+
+  if (PRINCIPAL_USER) {
     const filterIsFollowed = PRINCIPAL_USER.ACCOUNTS_FOLLOW.filter((e) => {
       return e === VideoData.USER_OWNER.id;
     });
@@ -32,10 +32,11 @@ function InfoVideo({ VideoData }) {
   };
 
   return (
-    <div className="bg-zinc-700 text-white">
-      <div>
+    <div className="bg-zinc-700 text-white w-96 rounded-lg px-5 py-4 ">
+      <div className="flex justify-between items-center capitalize">
         <div>
-          <h1>username</h1>
+          <h1 className="font-bold text-xl">@{VideoData.USER_OWNER.username}</h1>
+          <h1 className="font-extralight">{VideoData.VIDEO_DATE.split(" ")[1] }-{VideoData.VIDEO_DATE.split(" ")[2]}-{VideoData.VIDEO_DATE.split(" ")[3]}</h1>
         </div>
         {PRINCIPAL_USER ? PRINCIPAL_USER.username == VideoData.USER_OWNER.username ? (
           ""
@@ -57,8 +58,22 @@ function InfoVideo({ VideoData }) {
               {isClick ? "Siguiendo" : "Seguir"}
             </button>
           </div>
-        ): ""}
+        ) : (
+
+          <div>
+
+            <button className="bg-red-500 rounded-lg px-3 py-1 text-xl font-semibold">Logueate</button>
+
+          </div>
+
+        )}
       </div>
+
+      <div className="mt-5 ">
+        <p className="font-bold">{VideoData.VIDEO_NAME}</p>
+      </div>
+
+
     </div>
   );
 }
